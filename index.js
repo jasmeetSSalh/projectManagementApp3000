@@ -21,18 +21,26 @@ const globalTaskArray = [];
 const task1 = new Task(1, "Task 1", "This is task 1", "John", "2021-01-01", "Not Started", "2021-01-01", "John");
 const task2 = new Task(2, "Task 2", "This is task 2", "John", "2021-01-01", "In Progress", "2021-01-01", "John");
 const task3 = new Task(3, "Task 3", "This is task 3", "John", "2021-01-01", "Completed", "2021-01-01", "John");
+const task4 = new Task(4, "Task 4", "This is task 4", "John", "2021-01-01", "Not Started", "2021-01-01", "John");
 globalTaskArray.push(task1);
 globalTaskArray.push(task2);
 globalTaskArray.push(task3);
+globalTaskArray.push(task4);
 
 //Default route
 app.get("/", async (req, res) => {
   res.render("index.ejs",{
-    globalTaskArray: globalTaskArray
+    globalTasksArray: globalTaskArray
   });
 });
 
+app.get("/login", async (req, res) => {
+  res.render("logIn.ejs",{});
+});
 
+app.get("/signup", async (req, res) => {
+  res.render("signUp.ejs",{});
+});
 
 //To start the server
 //run by typing "node index.js" in terminal or install nodemon and run by typing "nodemon index.js"
