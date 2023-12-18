@@ -63,7 +63,7 @@ app.get("/", async (req, res) => {
 
 // auth
 const users = [];
-app.get("/users", (req, res) => {
+app.get("/users", async (req, res) => {
   res.json(users);
 });
 
@@ -71,7 +71,7 @@ app.post("/users", async (req, res) => {
   try {
     const hashedPass = await bcrypt.hash(req.body.password, 10); // salt and hash
     console.log(hashedPass);
-    const user = { name: req.body.name, password: hashedPass }; // store the hashed password in our database
+    const user = { name: req.body.email, password: hashedPass }; // store the hashed password in our database
     users.push(user); // for short term storage
     res.status(201).send(); // send empty response to client
   } catch {
@@ -80,7 +80,7 @@ app.post("/users", async (req, res) => {
 });
 
 app.post("/users/login", async (req, res) => {
-  const user = users.find((user) => user.name === req.body.name);
+  const user = users.find((user) => user.email === req.body.email);
   if (user == null) {
     return res.status(400).send("Cannot find user");
   }
