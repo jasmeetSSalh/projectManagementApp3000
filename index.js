@@ -112,9 +112,6 @@ app.post("/users/login", async (req, res) => {
   } catch {
     res.status(500).send();
   }
-  res.render("index.ejs", {
-    globalTasksArray: globalTaskArray,
-  });
 });
 
 // app.get("/login", async (req, res) => {
