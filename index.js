@@ -86,16 +86,22 @@ app.get("/users/signup", (req, res) => {
   res.render("signUp.ejs");
 });
 
+app.get("/users/:id", (req, res) => {});
+
 // Can incorporate password requirements here
 app.post("/users/signup", async (req, res) => {
-  try {
-    const hashedPass = await bcrypt.hash(req.body.password, 10); // salt and hash
-    console.log(hashedPass);
-    const user = { email: req.body.email, password: hashedPass }; // store the hashed password in our database
-    users.push(user); // for short term storage
-    res.status(201).redirect("/"); // should do some url redirecting, for now i just render the page
-  } catch {
-    res.status(500).send("An error has occurred, please try again");
+  if (req.body.password == req.body.confirmPassword) {
+    try {
+      const hashedPass = await bcrypt.hash(req.body.password, 10); // salt and hash
+      console.log(hashedPass);
+      const user = { email: req.body.email, password: hashedPass }; // store the hashed password in our database
+      users.push(user); // for short term storage
+      res.status(201).redirect("/"); // should do some url redirecting, for now i just render the page
+    } catch {
+      res.status(500).send("An error has occurred, please try again");
+    }
+  } else {
+    res.status(401).send(new Error("Non matching passwords"));
   }
 });
 
