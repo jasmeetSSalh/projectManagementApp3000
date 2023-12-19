@@ -1,51 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register Page</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-        }
+      body {
+        font-family: "Roboto", sans-serif;
+      }
 
-        input {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
+      input {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
     </style>
-</head>
-<body class="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 to-white">
+  </head>
+  <body
+    class="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 to-white"
+  >
     <div class="p-8 w-96">
-        <h1 class="text-5xl font-bold mb-16 text-center text-white">Register</h1>
-        <form action="/signup" method="POST" class="space-y-4">
-            <div>
-                <label for="name" class="flex items-center justify-center text-md font-medium text-gray-600">Name:</label>
-                <input type="text" id="name" name="name" required
-                    class="mt-1 p-2 w-full border rounded-md">
-            </div>
-            <div>
-                <label for="email" class="flex items-center justify-center text-md font-medium text-gray-600">Email:</label>
-                <input type="text" id="email" name="email" required
-                    class="mt-1 p-2 w-full border rounded-md">
-            </div>
-            <div>
-                <label for="password" class="flex items-center justify-center text-md font-medium text-gray-600">Password:</label>
-                <input type="password" id="password" name="password" required
-                    class="mt-1 p-2 w-full border rounded-md">
-            </div>
-            <div>
-                <label for="confirmPassword" class="flex items-center justify-center text-md font-medium text-gray-600">Confirm Password:</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" required
-                    class="mt-1 p-2 w-full border rounded-md">
-            </div>
-            <div class="flex justify-between">
-                <input type="submit" value="Sign Up"
-                    class="bg-gray-900 text-white px-4 py-2 rounded-md hover:bg-black">
-                <a href="/login" class="text-gray-300 hover:text-gray-400">Already have an account? Login</a>
-            </div>
-        </form>
+      <h1 class="text-5xl font-bold mb-16 text-center text-white">Register</h1>
+      <form action="/users/signup" method="POST" class="space-y-4">
+        <div>
+          <label
+            for="name"
+            class="flex items-center justify-center text-md font-medium text-gray-600"
+            >Name:</label
+          >
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            class="mt-1 p-2 w-full border rounded-md"
+          />
+        </div>
+        <div>
+          <label
+            for="email"
+            class="flex items-center justify-center text-md font-medium text-gray-600"
+            >Email:</label
+          >
+          <input
+            type="text"
+            id="email"
+            name="email"
+            required
+            class="mt-1 p-2 w-full border rounded-md"
+          />
+        </div>
+        <div>
+          <label
+            for="password"
+            class="flex items-center justify-center text-md font-medium text-gray-600"
+            >Password:</label
+          >
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            class="mt-1 p-2 w-full border rounded-md"
+          />
+        </div>
+        <div>
+          <label
+            for="confirmPassword"
+            class="flex items-center justify-center text-md font-medium text-gray-600"
+            >Confirm Password:</label
+          >
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            required
+            class="mt-1 p-2 w-full border rounded-md"
+          />
+        </div>
+        <div class="flex justify-between">
+          <input
+            type="submit"
+            value="Sign Up"
+            class="bg-gray-900 text-white px-4 py-2 rounded-md hover:bg-black"
+          />
+          <a href="login" class="text-gray-300 hover:text-gray-400"
+            >Already have an account? Login</a
+          >
+        </div>
+      </form>
     </div>
-</body>
+  </body>
 </html>

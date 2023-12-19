@@ -36,8 +36,8 @@
             <div class="flex-1 flex mt-10 ml-20">
                 <div id="notStarted" class="w-96 h-3/4 p-4 bg-gray-200">
                     <h2 class="text-xl font-bold mb-4">Not Started</h2>
-                    <% for(var i=0; i<globalTasksArray.length; i++) { %>
-                        <% var task = globalTasksArray[i]; %>
+                    <% for(var i=0; i<globalTaskArray.length; i++) { %>
+                        <% var task = globalTaskArray[i]; %>
                         <% if(task.status === "Not Started") { %>
                             <div>
                                 <h2><%= task.name %></h2>
@@ -50,8 +50,8 @@
                 </div>
                 <div id="inProgress" class="w-96 h-3/4 p-4 bg-gray-300">
                     <h2 class="text-xl font-bold mb-4">In Progress</h2>
-                    <% for(var i=0; i<globalTasksArray.length; i++) { %>
-                        <% var task = globalTasksArray[i]; %>
+                    <% for(var i=0; i<globalTaskArray.length; i++) { %>
+                        <% var task = globalTaskArray[i]; %>
                         <% if(task.status === "In Progress") { %>
                             <div>
                                 <h2><%= task.name %></h2>
@@ -64,8 +64,8 @@
                 </div>
                 <div id="completed" class="w-96 h-3/4 p-4 bg-gray-400">
                     <h2 class="text-xl font-bold mb-4">Completed</h2>
-                    <% for(var i=0; i<globalTasksArray.length; i++) { %>
-                        <% var task = globalTasksArray[i]; %>
+                    <% for(var i=0; i<globalTaskArray.length; i++) { %>
+                        <% var task = globalTaskArray[i]; %>
                         <% if(task.status === "Completed") { %>
                             <div>
                                 <h2><%= task.name %></h2>

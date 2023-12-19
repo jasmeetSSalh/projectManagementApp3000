@@ -78,7 +78,15 @@ app.get("/users", async (req, res) => {
   res.json(users);
 });
 
-app.post("/users", async (req, res) => {
+app.get("/users/login", (req, res) => {
+  res.render("logIn.ejs");
+});
+
+app.get("/users/signup", (req, res) => {
+  res.render("signUp.ejs");
+});
+
+app.post("/users/signup", async (req, res) => {
   try {
     const hashedPass = await bcrypt.hash(req.body.password, 10); // salt and hash
     console.log(hashedPass);
@@ -109,13 +117,13 @@ app.post("/users/login", async (req, res) => {
   });
 });
 
-app.get("/login", async (req, res) => {
-  res.render("logIn.ejs", {});
-});
+// app.get("/login", async (req, res) => {
+//   res.render("logIn.ejs", {});
+// });
 
-app.get("/signup", async (req, res) => {
-  res.render("signUp.ejs", {});
-});
+// app.get("/signup", async (req, res) => {
+//   res.render("signUp.ejs", {});
+// });
 
 //To start the server
 //run by typing "node index.js" in terminal or install nodemon and run by typing "nodemon index.js"
