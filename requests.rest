@@ -7,7 +7,10 @@ Content-Type: application/json
 
 {
     "email": "kyle@gmail.com",
-    "password": "password"
+    "role" : "Chinese labourer",
+    "password": "password",
+    "confirmPassword": "password",
+    "name": "Kyle"
 }
 
 ### have to implement these requests with html form data

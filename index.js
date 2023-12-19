@@ -1,10 +1,10 @@
 import Task from "./task.js";
-
 import express from "express";
 import bodyParser from "body-parser";
 // import pg from 'pg'; // for later
 import axios from "axios";
 import bcrypt, { hash } from "bcrypt";
+import Person from "./person.js";
 
 const app = express();
 const port = 3000;
@@ -93,10 +93,18 @@ app.post("/users/signup", async (req, res) => {
   if (req.body.password == req.body.confirmPassword) {
     try {
       const hashedPass = await bcrypt.hash(req.body.password, 10); // salt and hash
-      console.log(hashedPass);
-      const user = { email: req.body.email, password: hashedPass }; // store the hashed password in our database
+      // console.log(hashedPass);
+      // How will roles be assigned?
+      const user = new Person(
+        req.body.name,
+        req.body.role,
+        req.body.email,
+        hashedPass
+      );
+      // console.log(user);
       users.push(user); // for short term storage
-      res.status(201).redirect("/"); // should do some url redirecting, for now i just render the page
+      res.status(201).send("Succ");
+      // res.status(201).redirect("/"); // should do some url redirecting, for now i just render the page
     } catch {
       res.status(500).send("An error has occurred, please try again");
     }
