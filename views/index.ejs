@@ -32,26 +32,52 @@
         <!-- Main Content -->
         <div class="flex flex-col items-center">
             <h1 class="text-3xl font-bold mt-10">Tasks</h1>
-        
-           
-
 
             <div class="flex-1 flex mt-10 ml-20">
-                <div id="notStarted"class="w-1/3 h-3/4 p-4 bg-gray-200">
+                <div id="notStarted" class="w-96 h-3/4 p-4 bg-gray-200">
                     <h2 class="text-xl font-bold mb-4">Not Started</h2>
-                    <p>Your content for column 1 goes here.</p>
+                    <% for(var i=0; i<globalTasksArray.length; i++) { %>
+                        <% var task = globalTasksArray[i]; %>
+                        <% if(task.status === "Not Started") { %>
+                            <div>
+                                <h2><%= task.name %></h2>
+                                <p><%= task.description %></p>
+                                <p><%= task.lastModified %></p>
+                                <p><%= task.creator %></p>
+                            </div>
+                        <% } %>
+                    <% } %>
                 </div>
-                <div id="inProgress"class="w-1/3 h-3/4 p-4 bg-gray-300">
+                <div id="inProgress" class="w-96 h-3/4 p-4 bg-gray-300">
                     <h2 class="text-xl font-bold mb-4">In Progress</h2>
-                    <p>Your content for column 2 goes here.</p>
+                    <% for(var i=0; i<globalTasksArray.length; i++) { %>
+                        <% var task = globalTasksArray[i]; %>
+                        <% if(task.status === "In Progress") { %>
+                            <div>
+                                <h2><%= task.name %></h2>
+                                <p><%= task.description %></p>
+                                <p><%= task.lastModified %></p>
+                                <p><%= task.creator %></p>
+                            </div>
+                        <% } %>
+                    <% } %>
                 </div>
-                <div id="completed"class="w-1/3 h-3/4 p-4 bg-gray-400">
+                <div id="completed" class="w-96 h-3/4 p-4 bg-gray-400">
                     <h2 class="text-xl font-bold mb-4">Completed</h2>
-                    <p>Your content for column 3 goes here.</p>
+                    <% for(var i=0; i<globalTasksArray.length; i++) { %>
+                        <% var task = globalTasksArray[i]; %>
+                        <% if(task.status === "Completed") { %>
+                            <div>
+                                <h2><%= task.name %></h2>
+                                <p><%= task.description %></p>
+                                <p><%= task.lastModified %></p>
+                                <p><%= task.creator %></p>
+                            </div>
+                        <% } %>
+                    <% } %>
                 </div>
             </div>
         </div>
-        
     </div>
 
 </body>

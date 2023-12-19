@@ -50,9 +50,20 @@ const task3 = new Task(
   "2021-01-01",
   "John"
 );
+const task4 = new Task(
+  4,
+  "Task 4",
+  "This is task 4",
+  "John",
+  "2021-01-01",
+  "Not Started",
+  "2021-01-01",
+  "John"
+);
 globalTaskArray.push(task1);
 globalTaskArray.push(task2);
 globalTaskArray.push(task3);
+globalTaskArray.push(task4);
 
 //Default route
 app.get("/", async (req, res) => {
@@ -93,6 +104,17 @@ app.post("/users/login", async (req, res) => {
   } catch {
     res.status(500).send();
   }
+  res.render("index.ejs", {
+    globalTasksArray: globalTaskArray,
+  });
+});
+
+app.get("/login", async (req, res) => {
+  res.render("logIn.ejs", {});
+});
+
+app.get("/signup", async (req, res) => {
+  res.render("signUp.ejs", {});
 });
 
 //To start the server
