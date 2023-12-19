@@ -86,15 +86,16 @@ app.get("/users/signup", (req, res) => {
   res.render("signUp.ejs");
 });
 
+// Can incorporate password requirements here
 app.post("/users/signup", async (req, res) => {
   try {
     const hashedPass = await bcrypt.hash(req.body.password, 10); // salt and hash
     console.log(hashedPass);
-    const user = { name: req.body.email, password: hashedPass }; // store the hashed password in our database
+    const user = { email: req.body.email, password: hashedPass }; // store the hashed password in our database
     users.push(user); // for short term storage
-    res.status(201).send(); // send empty response to client
+    res.status(201).redirect("/"); // should do some url redirecting, for now i just render the page
   } catch {
-    res.status(500).send();
+    res.status(500).send("An error has occurred, please try again");
   }
 });
 
@@ -105,22 +106,14 @@ app.post("/users/login", async (req, res) => {
   }
   try {
     if (await bcrypt.compare(req.body.password, user.password)) {
-      res.send("Success");
+      res.send("Success").redirect("/");
     } else {
       res.send("Invalid password");
     }
   } catch {
-    res.status(500).send();
+    res.status(500).send("An error has occurred, please try again");
   }
 });
-
-// app.get("/login", async (req, res) => {
-//   res.render("logIn.ejs", {});
-// });
-
-// app.get("/signup", async (req, res) => {
-//   res.render("signUp.ejs", {});
-// });
 
 //To start the server
 //run by typing "node index.js" in terminal or install nodemon and run by typing "nodemon index.js"
