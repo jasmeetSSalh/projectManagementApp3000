@@ -86,7 +86,10 @@ app.get("/users/signup", (req, res) => {
   res.render("signUp.ejs");
 });
 
-app.get("/users/:id", (req, res) => {});
+// Custom user endpoints, might be used to display specific user data
+app.get("/users/:id", (req, res) => {
+  res.redirect("/");
+});
 
 // Can incorporate password requirements here
 app.post("/users/signup", async (req, res) => {
@@ -99,12 +102,12 @@ app.post("/users/signup", async (req, res) => {
         req.body.name,
         req.body.role,
         req.body.email,
-        hashedPass
+        hashedPass,
+        users.length
       );
       // console.log(user);
       users.push(user); // for short term storage
-      res.status(201).send("Succ");
-      // res.status(201).redirect("/"); // should do some url redirecting, for now i just render the page
+      res.status(201).redirect(`/users/${user.id}`);
     } catch {
       res.status(500).send("An error has occurred, please try again");
     }
@@ -120,7 +123,7 @@ app.post("/users/login", async (req, res) => {
   }
   try {
     if (await bcrypt.compare(req.body.password, user.password)) {
-      res.send("Success").redirect("/");
+      res.redirect("/");
     } else {
       res.send("Invalid password");
     }
