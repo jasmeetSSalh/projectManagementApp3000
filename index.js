@@ -92,27 +92,40 @@ app.get("/users/:id", (req, res) => {
 });
 
 // Can incorporate password requirements here
+// Endpoint used for initial user signup. Checks if user email already exists, and for matching confirmed password, if so, hashes a new password using bcrypt library, stores user information in a Person object.
 app.post("/users/signup", async (req, res) => {
-  if (req.body.password == req.body.confirmPassword) {
-    try {
-      const hashedPass = await bcrypt.hash(req.body.password, 10); // salt and hash
-      // console.log(hashedPass);
-      // How will roles be assigned?
-      const user = new Person(
-        req.body.name,
-        req.body.role,
-        req.body.email,
-        hashedPass,
-        users.length
-      );
-      // console.log(user);
-      users.push(user); // for short term storage
-      res.status(201).redirect(`/users/${user.id}`);
-    } catch {
-      res.status(500).send("An error has occurred, please try again");
-    }
+  if (users.find((user) => user.email === req.body.email)) {
+    res.send(
+      new Error("User with same email already exists, please try again")
+    );
+  } else if (!checkPasswordRequirements(req.body.password)) {
+    res.send(
+      new Error(
+        "Password does not fulfill requirements. Please try a new password"
+      )
+    );
   } else {
-    res.status(401).send(new Error("Non matching passwords"));
+    if (req.body.password == req.body.confirmPassword) {
+      try {
+        const hashedPass = await bcrypt.hash(req.body.password, 10); // salt and hash
+        // console.log(hashedPass);
+        // How will roles be assigned?
+        const user = new Person(
+          req.body.name,
+          req.body.role,
+          req.body.email,
+          hashedPass,
+          users.length
+        );
+        // console.log(user);
+        users.push(user); // for short term storage
+        res.redirect(201, `/users/${user.id}`);
+      } catch {
+        res.status(500).send("An error has occurred, please try again");
+      }
+    } else {
+      res.status(401).send(new Error("Non matching passwords"));
+    }
   }
 });
 
@@ -131,6 +144,15 @@ app.post("/users/login", async (req, res) => {
     res.status(500).send("An error has occurred, please try again");
   }
 });
+
+function checkPasswordRequirements(password) {
+  return (
+    password.length >= 6 &&
+    password.length <= 20 &&
+    /[A-Z]/.test(password) &&
+    /[^A-Za-z0-9\s]/.test(password)
+  );
+}
 
 //To start the server
 //run by typing "node index.js" in terminal or install nodemon and run by typing "nodemon index.js"
