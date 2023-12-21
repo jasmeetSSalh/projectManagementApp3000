@@ -126,6 +126,7 @@ app.post("/users/login", async (req, res) => {
       res.redirect("/");
     } else {
       res.send("Invalid password");
+      
     }
   } catch {
     res.status(500).send("An error has occurred, please try again");
