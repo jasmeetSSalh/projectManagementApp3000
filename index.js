@@ -18,6 +18,8 @@ app.use(express.json());
 
 // store all the tasks in this array
 const globalTaskArray = [];
+// export this array so we can use it in other files
+export default globalTaskArray
 
 // task cases so we don't have to test using the database
 const task1 = new Task(
@@ -65,6 +67,11 @@ globalTaskArray.push(task2);
 globalTaskArray.push(task3);
 globalTaskArray.push(task4);
 
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 //Default route
 app.get("/", async (req, res) => {
   res.render("index.ejs", {
@@ -72,10 +79,21 @@ app.get("/", async (req, res) => {
   });
 });
 
+<<<<<<< Updated upstream
 // auth
 const users = [];
 app.get("/users", async (req, res) => {
   res.json(users);
+=======
+app.get("/timeline", async (req, res) => {
+  res.render("test.ejs",{
+    globalTasksArray: globalTaskArray
+  });
+});
+
+app.get("/login", async (req, res) => {
+  res.render("logIn.ejs",{});
+>>>>>>> Stashed changes
 });
 
 app.get("/users/login", (req, res) => {
@@ -136,5 +154,11 @@ app.post("/users/login", async (req, res) => {
 //To start the server
 //run by typing "node index.js" in terminal or install nodemon and run by typing "nodemon index.js"
 app.listen(port, () => {
+<<<<<<< Updated upstream
   console.log(`Server is running at http://localhost:${port}`);
 });
+=======
+    console.log(`Server is running at http://localhost:${port}`);
+  });
+
+>>>>>>> Stashed changes
