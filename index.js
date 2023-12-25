@@ -45,22 +45,17 @@ projects.push(globalTaskArray);
 projects.push(globalTaskArray2);
 
 
-//Default route
-// app.get("/timeline", async (req, res) => {
-//   res.render("test.ejs",{
-//     globalTasksArray: globalTaskArray
-//   });
-// });
-
-app.get("/timeline", async (req, res) => {
-  res.render("test.ejs",{
-    projects: projects
-  });
-});
-
 app.get("/", async (req, res) => {
   res.render("index.ejs", {
     globalTaskArray: globalTaskArray,
+  });
+});
+
+
+//timeline
+app.get("/timeline", async (req, res) => {
+  res.render("timeline.ejs",{
+    projects: projects
   });
 });
 
