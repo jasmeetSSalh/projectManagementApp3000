@@ -78,52 +78,52 @@ app.get("/users/signup", (req, res) => {
   res.render("signUp.ejs");
 });
 
-// Custom user endpoints, might be used to display specific user data
-// app.get("/users/:id", (req, res) => {
-//   res.redirect("/");
-// });
+//Custom user endpoints, might be used to display specific user data
+app.get("/users/:id", (req, res) => {
+  res.redirect("/");
+});
 
-// // Can incorporate password requirements here
-// app.post("/users/signup", async (req, res) => {
-//   if (req.body.password == req.body.confirmPassword) {
-//     try {
-//       const hashedPass = await bcrypt.hash(req.body.password, 10); // salt and hash
-//       // console.log(hashedPass);
-//       // How will roles be assigned?
-//       const user = new Person(
-//         req.body.name,
-//         req.body.role,
-//         req.body.email,
-//         hashedPass,
-//         users.length
-//       );
-//       // console.log(user);
-//       users.push(user); // for short term storage
-//       res.status(201).redirect(`/users/${user.id}`);
-//     } catch {
-//       res.status(500).send("An error has occurred, please try again");
-//     }
-//   } else {
-//     res.status(401).send(new Error("Non matching passwords"));
-//   }
-// });
+// Can incorporate password requirements here
+app.post("/users/signup", async (req, res) => {
+  if (req.body.password == req.body.confirmPassword) {
+    try {
+      const hashedPass = await bcrypt.hash(req.body.password, 10); // salt and hash
+      // console.log(hashedPass);
+      // How will roles be assigned?
+      const user = new Person(
+        req.body.name,
+        req.body.role,
+        req.body.email,
+        hashedPass,
+        users.length
+      );
+      // console.log(user);
+      users.push(user); // for short term storage
+      res.status(201).redirect(`/users/${user.id}`);
+    } catch {
+      res.status(500).send("An error has occurred, please try again");
+    }
+  } else {
+    res.status(401).send(new Error("Non matching passwords"));
+  }
+});
 
-// app.post("/users/login", async (req, res) => {
-//   const user = users.find((user) => user.email === req.body.email);
-//   if (user == null) {
-//     return res.status(400).send("Cannot find user");
-//   }
-//   try {
-//     if (await bcrypt.compare(req.body.password, user.password)) {
-//       res.redirect("/");
-//     } else {
-//       res.send("Invalid password");
+app.post("/users/login", async (req, res) => {
+  const user = users.find((user) => user.email === req.body.email);
+  if (user == null) {
+    return res.status(400).send("Cannot find user");
+  }
+  try {
+    if (await bcrypt.compare(req.body.password, user.password)) {
+      res.redirect("/");
+    } else {
+      res.send("Invalid password");
       
-//     }
-//   } catch {
-//     res.status(500).send("An error has occurred, please try again");
-//   }
-// });
+    }
+  } catch {
+    res.status(500).send("An error has occurred, please try again");
+  }
+});
 
 //To start the server
 //run by typing "node index.js" in terminal or install nodemon and run by typing "nodemon index.js"
