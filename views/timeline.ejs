@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Project Manager Timeline</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+      }
+      .chartMenu {
+        width: 100vw;
+        height: 40px;
+        background: #1A1A1A;
+        color: rgba(54, 162, 235, 1);
+      }
+      .chartCard {
+        width: 100vw;
+        height: calc(100vh);
+        background: rgba(54, 162, 235, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .chartBox {
+        width: 60%;
+        padding: 20px;
+        margin-left: 10%;
+        border-radius: 20px;
+        border: solid 3px rgb(0, 0, 0);
+        background: white;
+      }
+      .dropdown {
+        min-width: 15em;
+        position: relative;
+        margin: 2em;
+      }
+      .dropdown * {
+        box-sizing: border-box;
+      }
+      .select {
+        background: #2a2f3b;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 2px #2a2f3b solid;
+        border-radius: 0.5em;
+        padding: 1em;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .select-clicked {
+        border: 2px #26489a solid;
+        box-shadow: 0 0 0.8em #26489a;
+      }
+      .select:hover {
+        background: #323741;
+      }
+      .caret {
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 6px solid #fff;
+        transition: 0.3s;
+      }
+      .caret-rotate {
+        transform: rotate(180deg);
+      }
+      .menu {
+        list-style: none;
+        padding: 0.2em 0.5em;
+        background: #323741;
+        border: 1px #363a43 solid;
+        box-shadow: 0 0.5em  1em rgba(0,0,0,0.2);
+        border-radius: 0.5em;
+        color: #9fa5b5;
+        position: absolute;
+        top: 3.5em;
+        left: 50%;
+        width: 100%;
+        transform: translateX(-50%);
+        opacity: 0;
+        display: none;
+        transition: 0.2s;
+        z-index: 1;
+      }
+      .menu li {
+        padding: 0.7em 0.5em;
+        margin: 0.3em 0;
+        border-radius: 0.5em;
+        cursor: pointer;
+      }
+      .menu li:hover {
+        background: #2a2d35;
+      }
+      .active {
+        background: #23242a;
+      }
+      .menu-open {
+        display: block;
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="chartCard">
+      <div class="dropdown">
+        <div class="select">
+          <span class="selected">Project #1</span>
+          <div class="caret"></div>
+        </div>
+        <ul class="menu">
+          <li class="active">Project #1</li>
+          <li>Project #2</li>
+          <li>Project #3</li>
+        </ul>
+      </div>
+      <div class="chartBox">
+        <canvas id="myChart"></canvas>
+      </div>
+    </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="/chart.js" type="module"></script>
+  </body>
+</html>
