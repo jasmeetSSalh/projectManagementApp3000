@@ -22,19 +22,19 @@ const globalTaskArray = [];
 const globalTaskArray2 = [];
 
 // task cases so we don't have to test using the database
-const task1 = new Task(1, "Task 1", "This is task 1", 'Irfan', '2023-12-03', '2023-12-06', "Not Started", "2021-01-01", "John");
-const task2 = new Task(2, "Task 2", "This is task 2", 'Jasmeet', '2023-12-06', '2023-12-09', "In Progress", "2021-01-01", "John");
-const task3 = new Task(3, "Task 3", "This is task 3", 'Gavin', '2023-12-09', '2023-12-20', "Completed", "2021-01-01", "John");
-const task4 = new Task(4, "Task 4", "This is task 4", 'Sharyar', '2023-12-12', '2023-12-24', "Not Started", "2021-01-01", "John");
+const task1 = new Task(1, "Task 1", "This is task 1", 'Irfan', '2023-12-03', '2023-12-06', "Not Started", "2021-01-01");
+const task2 = new Task(2, "Task 2", "This is task 2", 'Jasmeet', '2023-12-06', '2023-12-09', "In Progress", "2021-01-01");
+const task3 = new Task(3, "Task 3", "This is task 3", 'Gavin', '2023-12-09', '2023-12-20', "Completed", "2021-01-01");
+const task4 = new Task(4, "Task 4", "This is task 4", 'Sharyar', '2023-12-12', '2023-12-24', "Not Started", "2021-01-01");
 globalTaskArray.push(task1);
 globalTaskArray.push(task2);
 globalTaskArray.push(task3);
 globalTaskArray.push(task4);
 
-const task5 = new Task(1, "Task 5", "This is task 5", 'John', '2023-12-03', '2023-12-12', "Not Started", "2021-01-01", "John");
-const task6 = new Task(2, "Task 6", "This is task 6", 'Bob', '2023-12-06', '2023-12-07', "In Progress", "2021-01-01", "John");
-const task7 = new Task(3, "Task 7", "This is task 7", 'Obama', '2023-12-09', '2023-12-20', "Completed", "2021-01-01", "John");
-const task8 = new Task(4, "Task 8", "This is task 8", 'Joever', '2023-12-20', '2023-12-28', "Completed", "2021-01-01", "John");
+const task5 = new Task(1, "Task 5", "This is task 5", 'John', '2023-12-03', '2023-12-12', "Not Started", "2021-01-01");
+const task6 = new Task(2, "Task 6", "This is task 6", 'Bob', '2023-12-06', '2023-12-07', "In Progress", "2021-01-01");
+const task7 = new Task(3, "Task 7", "This is task 7", 'Obama', '2023-12-09', '2023-12-20', "Completed", "2021-01-01");
+const task8 = new Task(4, "Task 8", "This is task 8", 'Joever', '2023-12-20', '2023-12-28', "Completed", "2021-01-01");
 
 globalTaskArray2.push(task5);
 globalTaskArray2.push(task6);

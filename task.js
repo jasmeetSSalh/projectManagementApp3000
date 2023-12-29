@@ -1,5 +1,5 @@
 export default class Task {
-    constructor(id, name, description, personName, assignedTo, dueDate, status, lastModified, creator) {
+    constructor(id, name, description, personName, assignedTo, dueDate, status, lastModified) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -8,7 +8,6 @@ export default class Task {
         this.dueDate = dueDate;
         this.status = status;
         this.lastModified = lastModified;
-        this.creator = creator;
     }
     speak () {
         console.log(`${this.name} says hello!`);
