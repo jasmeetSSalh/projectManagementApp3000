@@ -26,6 +26,7 @@ const task1 = new Task(1, "Task 1", "This is task 1", 'Irfan', '2023-12-03', '20
 const task2 = new Task(2, "Task 2", "This is task 2", 'Jasmeet', '2023-12-06', '2023-12-09', "In Progress", "2021-01-01");
 const task3 = new Task(3, "Task 3", "This is task 3", 'Gavin', '2023-12-09', '2023-12-20', "Completed", "2021-01-01");
 const task4 = new Task(4, "Task 4", "This is task 4", 'Sharyar', '2023-12-12', '2023-12-24', "Not Started", "2021-01-01");
+
 globalTaskArray.push(task1);
 globalTaskArray.push(task2);
 globalTaskArray.push(task3);
@@ -56,6 +57,14 @@ app.get("/", async (req, res) => {
   });
 });
 
+
+//timeline
+app.get("/timeline", async (req, res) => {
+  res.render("timeline.ejs",{
+    projects: projects
+  });
+});
+
 // auth
 const users = [];
 app.get("/users", async (req, res) => {
@@ -70,7 +79,7 @@ app.get("/users/signup", (req, res) => {
   res.render("signUp.ejs");
 });
 
-// Custom user endpoints, might be used to display specific user data
+//Custom user endpoints, might be used to display specific user data
 app.get("/users/:id", (req, res) => {
   res.redirect("/");
 });
