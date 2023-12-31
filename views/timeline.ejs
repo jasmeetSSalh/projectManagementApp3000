@@ -3,12 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <title>Project Manager Timeline</title>
   <style>
     * {
       margin: 0;
       padding: 0;
       font-family: sans-serif;
+    }
+    .mainbox {
+      display: flex;
     }
     .chartMenu {
       width: 100vw;
@@ -19,15 +23,16 @@
     .chartCard {
       width: 100vw;
       height: calc(100vh);
-      background: rgba(54, 162, 235, 0.2);
+      background: rgba(14, 82, 127, 0.2);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      padding-bottom: 6%;
     }
     .chartBox {
-      width: 70%;
+      width: 90%;
       padding: 20px;
-      margin-left: 2%;
       border-radius: 20px;
       border: solid 3px rgb(0, 0, 0);
       background: white;
@@ -108,21 +113,34 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+  <nav class="bg-gray-900 p-4 text-white">
+    <div class="container mx-auto">
+        <ul class="flex">
+            <li class="mr-6"><a href="#" class="hover:text-blue-500">Project Management App</a></li>
+        </ul>
+    </div>
+  </nav>
 
-  <div class="chartCard">
-    <div class="dropdown">
-      <div class="select">
-        <span class="selected">Project #1</span>
-        <div class="caret"></div>
-      </div>
-      <ul class="menu">
-        <!-- <li class="active">Project #1</li>
-        <li>Project #2</li>
-        <li>Project #3</li> -->
+  <div class="mainbox">
+    <div class="h-screen bg-gray-800 text-white p-4 w-1/6">
+      <h1 class="text-xl font-bold mb-16">Planning</h1>
+      <ul class="space-y-4 ml-10">
+          <li><a href="/" class="text-blue-500">Home</a></li>
+          <li><a href="/timeline" class="text-blue-500">Timeline</a></li>
+          <li><a href="#" class="text-blue-500">Projects</a></li>
       </ul>
     </div>
-    <div class="chartBox">
-      <canvas id="myChart"></canvas>
+    <div class="chartCard">
+      <div class="dropdown">
+        <div class="select">
+          <span class="selected">Project #1</span>
+          <div class="caret"></div>
+        </div>
+        <ul class="menu"></ul>
+      </div>
+      <div class="chartBox">
+        <canvas id="myChart"></canvas>
+      </div>
     </div>
   </div>
   
@@ -173,24 +191,6 @@
 
       menu.appendChild(li);
     });
-    // options.forEach((option, index) => {
-    //   option.addEventListener('click', () => {
-    //     selected.innerText = option.innerText;
-    //     select.classList.remove('select-clicked');
-    //     caret.classList.remove('caret-rotate');
-    //     menu.classList.remove('menu-open');
-
-    //     globalTasksArray = projects[index];
-
-    //     options.forEach(opt => {
-    //       opt.classList.remove('active');
-    //     });
-    //     option.classList.add('active');
-
-    //     // Call chartupdate to update the chart with the new data
-    //     chartupdate();
-    //   });
-    // });
 
     const colours = ['rgba(255, 26, 104, 1)', 'rgba(255, 159, 64, 1)', 'rgba(75, 192, 192, 1)'];
 
